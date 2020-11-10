@@ -36,36 +36,21 @@ class ModelSession extends DatabaseHelper implements DataBaseInterface {
   String token;
   String avatar;
   String nombre;
-  String tipoUsuario;
-  String motivoRechazo;
   int idUsuario;
-  int idPlan;
-  int idServicio;
   int usuarioApp;
-  bool esCliente;
 
   ModelSession(
       {this.token,
         this.avatar,
         this.nombre,
-        this.tipoUsuario,
-        this.motivoRechazo,
         this.idUsuario,
-        this.idPlan,
-        this.idServicio,
-        this.esCliente,
         this.usuarioApp});
 
   ModelSession.fromJson(Map<String, dynamic> json) {
     token = json['token'];
     avatar = json['avatar'];
     nombre = json['nombre'];
-    tipoUsuario = json['tipo_usuario'];
-    motivoRechazo = json['motivo_rechazo'];
     idUsuario = json['id_usuario'];
-    idPlan = json['id_plan'];
-    idServicio = json['id_servicio'];
-    esCliente = json['es_cliente'];
     usuarioApp = json['usuario_app'];
   }
 
@@ -74,12 +59,7 @@ class ModelSession extends DatabaseHelper implements DataBaseInterface {
     data['token'] = this.token;
     data['avatar'] = this.avatar;
     data['nombre'] = this.nombre;
-    data['tipo_usuario'] = this.tipoUsuario;
-    data['motivo_rechazo'] = this.motivoRechazo;
     data['id_usuario'] = this.idUsuario;
-    data['id_servicio'] = this.idServicio;
-    data['id_plan'] = this.idPlan;
-    data['es_cliente'] = this.esCliente;
     data['usuario_app'] = this.usuarioApp;
     return data;
   }
@@ -102,11 +82,6 @@ class ModelSession extends DatabaseHelper implements DataBaseInterface {
       if (maps.length > 0) {
         AppSession.isLoggedIn = true;
         var data = json.decode(json.encode(maps.first));
-        if (data['es_cliente'] == 1) {
-          data['es_cliente'] = true;
-        } else {
-          data['es_cliente'] = false;
-        }
 
         return ModelSession.fromJson(data);
       } else {
@@ -134,13 +109,8 @@ class ModelSession extends DatabaseHelper implements DataBaseInterface {
           "token TEXT,"
           "avatar TEXT,"
           "nombre TEXT,"
-          "tipo_usuario TEXT,"
-          "motivo_rechazo TEXT,"
           "id_usuario INTEGER,"
-          "id_plan INTEGER,"
-          "id_servicio INTEGER,"
-          "usuario_app INTEGER,"
-          "es_cliente BOOLEAN)",
+          "usuario_app INTEGER)",
     );
     return true;
   }
