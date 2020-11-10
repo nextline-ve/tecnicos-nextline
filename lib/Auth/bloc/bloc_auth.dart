@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
-import 'package:nextline/utils/app_session.dart';
-import 'package:nextline/utils/geolocation_background.dart';
+import 'package:tenicos_nextline/utils/app_session.dart';
+import 'package:tenicos_nextline/utils/geolocation_background.dart';
 import '../repository_auth.dart';
 
 class BlocAuth implements Bloc {
@@ -14,14 +14,12 @@ class BlocAuth implements Bloc {
   Sink<Map<String, dynamic>> get dataForLogin => _streamMakeLogin.sink;
   Stream<bool> get responseMakeLogin =>
       _streamMakeLogin.stream.asyncMap((dataLogin) => _makeLogin(dataLogin));
+
   Future<bool> _makeLogin(Map<String, dynamic> dataLogin) async {
     ModelSession data = await RepositoryAuth().setMakeLoginAPI(dataLogin);
-    if (data.idUsuario is int) {
-      await appSession.register(data);
-      if (data.tipoUsuario == 'T') {
-        GeolocationBackground(technicianId: data.idUsuario);
-      }
-    }
+
+    await appSession.register(data);
+    GeolocationBackground(technicianId: data.idUsuario);
     return data.idUsuario is int;
   }
 
