@@ -1,24 +1,19 @@
-import 'dart:io';
-
 import 'package:basic_utils/basic_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tenicos_nextline/Auth/bloc/bloc_auth.dart';
 import 'package:tenicos_nextline/Tickets/bloc/bloc_tickets.dart';
 import 'package:tenicos_nextline/Tickets/model/modal_message.dart';
 import 'package:tenicos_nextline/Tickets/model/model_ticket.dart';
-import 'package:tenicos_nextline/Tickets/ui/widgets/item_detail_header.dart';
+import 'package:tenicos_nextline/widgets/item_detail_header.dart';
 import 'package:tenicos_nextline/utils/app_colors.dart';
 import 'package:tenicos_nextline/utils/app_fonts.dart';
-import 'package:tenicos_nextline/utils/app_session.dart';
 import 'package:tenicos_nextline/utils/app_utils.dart';
 import 'package:tenicos_nextline/widgets/image_viewer.dart';
 import 'package:tenicos_nextline/widgets/jloading_screen.dart';
 import 'package:tenicos_nextline/widgets/jtext_field.dart';
 import 'package:tenicos_nextline/widgets/line.dart';
-import 'package:tenicos_nextline/widgets/upload_image_modal.dart';
 
 class Chat extends StatefulWidget {
   final picker = ImagePicker();
@@ -92,8 +87,6 @@ class _Chat extends State<Chat> {
                         }),
                   ),
                 ),
-                if (imageUrl != "") _imageBox(),
-                _box()
               ],
             ),
           ),
@@ -169,22 +162,6 @@ class _Chat extends State<Chat> {
                         height: 15.0,
                         width: 15.0,
                       ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          loadingImage = false;
-                          imageUrl = "";
-                          widget.blocTickets.cancelUpdload();
-                        });
-                      },
-                      child: ClipOval(
-                          child: Container(
-                              padding: EdgeInsets.all(10),
-                              child: Icon(
-                                Icons.close,
-                                color: AppColors.blue,
-                              ))),
-                    ),
                   ],
                 ),
               ),
@@ -193,54 +170,6 @@ class _Chat extends State<Chat> {
         ));
   }
 
-  Widget _box() {
-    return Form(
-      key: _messageForm,
-      child: Container(
-        alignment: Alignment.bottomCenter,
-        decoration: BoxDecoration(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Line(
-              width: 100,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 15),
-                            child: JTextField(
-                                backgoundColor: AppColors.white_color,
-                                label: "Escribe tu Mensaje",
-                                inputType: TextInputType.text,
-                                isPass: false,
-                                disable: widget.disable,
-                                onValidator: null,
-                                onKeyValue: (val) {
-                                  _messageInput = val;
-                                  return val;
-                                }),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   Widget _nameLabel(String text) {
     return Text(
