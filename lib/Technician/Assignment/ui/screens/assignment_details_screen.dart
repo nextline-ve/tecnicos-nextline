@@ -3,13 +3,13 @@ import 'package:tenicos_nextline/Technician/Assignment/ui/screens/repair_screen.
 import 'package:tenicos_nextline/Tickets/bloc/bloc_tickets.dart';
 import 'package:tenicos_nextline/Tickets/model/model_ticket.dart';
 import 'package:tenicos_nextline/Tickets/ui/screens/chat.dart';
+import 'package:tenicos_nextline/utils/exit_app.dart';
 import 'package:tenicos_nextline/widgets/item_detail_header.dart';
 import 'package:tenicos_nextline/utils/app_colors.dart';
 import 'package:tenicos_nextline/utils/app_fonts.dart';
 import 'package:tenicos_nextline/widgets/editable_input.dart';
 import 'package:tenicos_nextline/widgets/jbutton.dart';
 import 'package:tenicos_nextline/widgets/jloading_screen.dart';
-import 'package:tenicos_nextline/widgets/lateral_menu.dart';
 import 'package:map_launcher/map_launcher.dart';
 
 class AssignmentDetailsScreen extends StatefulWidget {
@@ -78,7 +78,7 @@ class _AssignmentDetailsScreen extends State<AssignmentDetailsScreen> {
           textAlign: TextAlign.center,
           style: TextStyle(fontFamily: AppFonts.input, fontSize: 16),
         ),
-        actions: [LateralMenu.exitFromAppButton(context)],
+        actions: [ExitApp.exitFromAppButton(context)],
       ),
       body: Stack(
         children: [
@@ -123,7 +123,6 @@ class _AssignmentDetailsScreen extends State<AssignmentDetailsScreen> {
           )
         ],
       ),
-      endDrawer: LateralMenu(),
     );
   }
 

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:nextline/Technician/Assignment/model_assignment.dart';
-import 'package:nextline/Technician/Assignment/ui/screens/failed_repair_screen.dart';
-import 'package:nextline/Technician/Assignment/ui/screens/success_repair_screen.dart';
-import 'package:nextline/Technician/Assignment/ui/widgets/stopwatch.dart';
-import 'package:nextline/Tickets/bloc/bloc_tickets.dart';
-import 'package:nextline/Tickets/model/model_ticket.dart';
-import 'package:nextline/utils/app_colors.dart';
-import 'package:nextline/utils/app_fonts.dart';
-import 'package:nextline/widgets/confirmation_modal.dart';
-import 'package:nextline/widgets/jbutton.dart';
+import 'package:tenicos_nextline/Technician/Assignment/model_assignment.dart';
+import 'package:tenicos_nextline/Technician/Assignment/ui/screens/failed_repair_screen.dart';
+import 'package:tenicos_nextline/Technician/Assignment/ui/screens/success_repair_screen.dart';
+import 'package:tenicos_nextline/Technician/Assignment/ui/widgets/stopwatch.dart';
+import 'package:tenicos_nextline/Tickets/bloc/bloc_tickets.dart';
+import 'package:tenicos_nextline/Tickets/model/model_ticket.dart';
+import 'package:tenicos_nextline/utils/app_colors.dart';
+import 'package:tenicos_nextline/utils/app_fonts.dart';
+import 'package:tenicos_nextline/widgets/confirmation_modal.dart';
+import 'package:tenicos_nextline/widgets/jbutton.dart';
 
 class RepairScreen extends StatefulWidget {
   final Ticket ticket;

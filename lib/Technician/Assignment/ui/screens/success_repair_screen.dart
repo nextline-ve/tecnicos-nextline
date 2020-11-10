@@ -3,15 +3,15 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:nextline/Technician/Assignment/model_assignment.dart';
-import 'package:nextline/Technician/Assignment/ui/screens/client_confirmation_screen.dart';
-import 'package:nextline/Tickets/bloc/bloc_tickets.dart';
-import 'package:nextline/Tickets/ui/widgets/dropdown.dart';
-import 'package:nextline/Tickets/ui/widgets/input_container.dart';
-import 'package:nextline/utils/app_colors.dart';
-import 'package:nextline/utils/app_fonts.dart';
-import 'package:nextline/widgets/jbutton.dart';
-import 'package:nextline/widgets/upload_image_modal.dart';
+import 'package:tenicos_nextline/Technician/Assignment/model_assignment.dart';
+import 'package:tenicos_nextline/Technician/Assignment/ui/screens/client_confirmation_screen.dart';
+import 'package:tenicos_nextline/Technician/Assignment/ui/widgets/dropdown.dart';
+import 'package:tenicos_nextline/Technician/Assignment/ui/widgets/input_container.dart';
+import 'package:tenicos_nextline/Tickets/bloc/bloc_tickets.dart';
+import 'package:tenicos_nextline/utils/app_colors.dart';
+import 'package:tenicos_nextline/utils/app_fonts.dart';
+import 'package:tenicos_nextline/widgets/jbutton.dart';
+import 'package:tenicos_nextline/widgets/upload_image_modal.dart';
 
 class SuccessRepairScreen extends StatefulWidget {
   final Assignment assignment;

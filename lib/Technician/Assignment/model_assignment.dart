@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:nextline/Tickets/model/model_ticket.dart';
 
 class Assignment {
   String horaEntrada;

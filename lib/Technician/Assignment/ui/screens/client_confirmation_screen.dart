@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:nextline/Technician/Assignment/model_assignment.dart';
-import 'package:nextline/Tickets/bloc/bloc_tickets.dart';
-import 'package:nextline/utils/app_colors.dart';
-import 'package:nextline/utils/app_fonts.dart';
-import 'package:nextline/widgets/jbutton.dart';
+import 'package:tenicos_nextline/Technician/Assignment/model_assignment.dart';
+import 'package:tenicos_nextline/Tickets/bloc/bloc_tickets.dart';
+import 'package:tenicos_nextline/utils/app_colors.dart';
+import 'package:tenicos_nextline/utils/app_fonts.dart';
+import 'package:tenicos_nextline/widgets/jbutton.dart';
 import 'package:signature/signature.dart';
 
 class ClientConfirmationScreen extends StatefulWidget {
