@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:nextline/Bills/ui/wdigets/item_detail_header.dart';
-import 'package:nextline/Technician/Assignment/ui/screens/repair_screen.dart';
-import 'package:nextline/Tickets/bloc/bloc_tickets.dart';
-import 'package:nextline/Tickets/model/model_ticket.dart';
-import 'package:nextline/Tickets/ui/screens/chat.dart';
-import 'package:nextline/utils/app_colors.dart';
-import 'package:nextline/utils/app_fonts.dart';
-import 'package:nextline/widgets/editable_input.dart';
-import 'package:nextline/widgets/jbutton.dart';
-import 'package:nextline/widgets/jloading_screen.dart';
-import 'package:nextline/widgets/lateral_menu.dart';
+import 'package:tenicos_nextline/Technician/Assignment/ui/screens/repair_screen.dart';
+import 'package:tenicos_nextline/Tickets/bloc/bloc_tickets.dart';
+import 'package:tenicos_nextline/Tickets/model/model_ticket.dart';
+import 'package:tenicos_nextline/Tickets/ui/screens/chat.dart';
+import 'package:tenicos_nextline/Tickets/ui/widgets/item_detail_header.dart';
+import 'package:tenicos_nextline/utils/app_colors.dart';
+import 'package:tenicos_nextline/utils/app_fonts.dart';
+import 'package:tenicos_nextline/widgets/editable_input.dart';
+import 'package:tenicos_nextline/widgets/jbutton.dart';
+import 'package:tenicos_nextline/widgets/jloading_screen.dart';
+import 'package:tenicos_nextline/widgets/lateral_menu.dart';
 import 'package:map_launcher/map_launcher.dart';
 
 class AssignmentDetailsScreen extends StatefulWidget {
