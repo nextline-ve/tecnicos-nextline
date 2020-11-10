@@ -2,13 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
-import 'package:nextline/Auth/bloc/bloc_auth.dart';
-import 'package:nextline/Auth/ui/screens/retrieve_password.dart';
-import 'package:nextline/utils/app_colors.dart';
-import 'package:nextline/utils/app_http.dart';
-import 'package:nextline/utils/app_session.dart';
-import 'package:nextline/widgets/jbutton.dart';
-import 'package:nextline/widgets/jtext_field.dart';
+import 'package:tenicos_nextline/Auth/bloc/bloc_auth.dart';
+import 'package:tenicos_nextline/utils/app_colors.dart';
+import 'package:tenicos_nextline/utils/app_http.dart';
+import 'package:tenicos_nextline/utils/app_session.dart';
+import 'package:tenicos_nextline/widgets/jbutton.dart';
+import 'package:tenicos_nextline/widgets/jtext_field.dart';
 
 class FormLogin extends StatefulWidget {
   @override
@@ -43,13 +42,7 @@ class _FormLogin extends State<FormLogin> {
     super.initState();
     streamMessageLogin.stream.forEach((message) {
       if (message == "Bienvenido") {
-        switch (AppSession.data.tipoUsuario) {
-          case "T":
-            Navigator.pushReplacementNamed(context, "/technician-home");
-            break;
-          default:
-            Navigator.pushReplacementNamed(context, "/home");
-        }
+        Navigator.pushReplacementNamed(context, "/technician-home");
       }
       Scaffold.of(context).showSnackBar(SnackBar(content: Text(message)));
     });
@@ -98,25 +91,6 @@ class _FormLogin extends State<FormLogin> {
                 _pass = val;
                 return val;
               },
-            ),
-            GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => RetrievePassword(
-                          blocAuth: this.blocAuth,
-                        )),
-              ),
-              child: Container(
-                margin: EdgeInsets.only(top: 1, bottom: 10),
-                child: Text(
-                  "¿Olvidó su contraseña?",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: "fontInput",
-                  ),
-                ),
-              ),
             ),
             StreamBuilder(
               stream: blocAuth.responseMakeLogin,
