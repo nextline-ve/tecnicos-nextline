@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nextline/Auth/bloc/bloc_auth.dart';
-import 'package:nextline/Auth/ui/widgets/form_login.dart';
-import 'package:nextline/Auth/ui/widgets/white_logo.dart';
-import 'package:nextline/utils/app_colors.dart';
-import 'package:nextline/widgets/background.dart';
-import 'package:nextline/widgets/jbutton.dart';
-import 'package:nextline/widgets/line.dart';
+import 'package:tenicos_nextline/Auth/bloc/bloc_auth.dart';
+import 'package:tenicos_nextline/Auth/ui/widgets/form_login.dart';
+import 'package:tenicos_nextline/Auth/ui/widgets/white_logo.dart';
+import 'package:tenicos_nextline/utils/app_colors.dart';
+import 'package:tenicos_nextline/widgets/background.dart';
+import 'package:tenicos_nextline/widgets/jbutton.dart';
+import 'package:tenicos_nextline/widgets/line.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -37,11 +37,6 @@ class _LoginScreen extends State<LoginScreen> {
               Line(
                 width: 100,
               ),
-              JButton(
-                label: "SOLICITA TU SERVICIO",
-                onTab: _serviceRequest,
-                background: AppColors.ligth_blue_color,
-              ),
             ],
           )
         ],
@@ -49,7 +44,4 @@ class _LoginScreen extends State<LoginScreen> {
     );
   }
 
-  void _serviceRequest() {
-    Navigator.pushNamed(context, '/select-service');
-  }
 }
