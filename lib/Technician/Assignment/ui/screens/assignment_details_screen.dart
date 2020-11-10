@@ -3,7 +3,7 @@ import 'package:tenicos_nextline/Technician/Assignment/ui/screens/repair_screen.
 import 'package:tenicos_nextline/Tickets/bloc/bloc_tickets.dart';
 import 'package:tenicos_nextline/Tickets/model/model_ticket.dart';
 import 'package:tenicos_nextline/Tickets/ui/screens/chat.dart';
-import 'package:tenicos_nextline/Tickets/ui/widgets/item_detail_header.dart';
+import 'package:tenicos_nextline/widgets/item_detail_header.dart';
 import 'package:tenicos_nextline/utils/app_colors.dart';
 import 'package:tenicos_nextline/utils/app_fonts.dart';
 import 'package:tenicos_nextline/widgets/editable_input.dart';
@@ -15,6 +15,7 @@ import 'package:map_launcher/map_launcher.dart';
 class AssignmentDetailsScreen extends StatefulWidget {
   final Ticket ticket;
   final BlocTickets blocTickets;
+
   AssignmentDetailsScreen(
       {Key key, @required this.ticket, @required this.blocTickets})
       : super(key: key);
@@ -102,81 +103,8 @@ class _AssignmentDetailsScreen extends State<AssignmentDetailsScreen> {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                                   ConnectionState.done &&
-                              snapshot.hasData)
-                            return Column(
-                              children: [
-                                Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 10),
-                                    child: Text(
-                                      "Datos del Cliente",
-                                      style: TextStyle(
-                                          color: AppColors.blue_dark,
-                                          fontSize: 18,
-                                          fontFamily: AppFonts.poppins_bold),
-                                    )),
-                                Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 10),
-                                    child: EditableInput(
-                                      placeholder: "Nombre / Razón Social",
-                                      value:
-                                          "${snapshot.data.cliente['nombre_razsoc']}",
-                                      readOnly: true,
-                                    )),
-                                Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 10),
-                                    child: EditableInput(
-                                      placeholder: "Número de Teléfono",
-                                      value:
-                                          "${snapshot.data.cliente['celular']}",
-                                      readOnly: true,
-                                    )),
-                                Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 10),
-                                    child: EditableInput(
-                                      placeholder: "Correo Electrónico",
-                                      value: snapshot.data.cliente['correo'] ==
-                                              null
-                                          ? ""
-                                          : "${snapshot.data.cliente['correo']}",
-                                      readOnly: true,
-                                    )),
-                                Container(
-                                  width: 250,
-                                  child: JButton(
-                                    padding: EdgeInsets.all(10),
-                                    icon: Icons.comment,
-                                    fontSize: 10,
-                                    labelColor: AppColors.white_color,
-                                    label: "CONVERSAR CON CLIENTE",
-                                    background: AppColors.blue,
-                                    buttonHeight: 40.0,
-                                    onTab: () => Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Chat(
-                                                  blocTickets:
-                                                      widget.blocTickets,
-                                                  ticket: snapshot.data,
-                                                  disable: true,
-                                                ))),
-                                  ),
-                                ),
-                                Container(
-                                  width: 250,
-                                  child: JButton(
-                                    padding: EdgeInsets.all(10),
-                                    icon: Icons.location_on,
-                                    fontSize: 10,
-                                    labelColor: AppColors.white_color,
-                                    label: "VISITAR A CLIENTE",
-                                    background: AppColors.blue,
-                                    buttonHeight: 40.0,
-                                    onTab: () => openMapsSheet(
-                                        context, snapshot.data.cliente),
-                                  ),
-                                ),
-                              ],
-                            );
+                              snapshot.hasData) return clientData(snapshot);
+
                           return JLoadingScreen();
                         })),
                 JButton(
@@ -196,6 +124,78 @@ class _AssignmentDetailsScreen extends State<AssignmentDetailsScreen> {
         ],
       ),
       endDrawer: LateralMenu(),
+    );
+  }
+
+  Widget clientData(snapshot) {
+    return Column(
+      children: [
+        Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: Text(
+              "Datos del Cliente",
+              style: TextStyle(
+                  color: AppColors.blue_dark,
+                  fontSize: 18,
+                  fontFamily: AppFonts.poppins_bold),
+            )),
+        Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: EditableInput(
+              placeholder: "Nombre / Razón Social",
+              value: "${snapshot.data.cliente['nombre_razsoc']}",
+              readOnly: true,
+            )),
+        Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: EditableInput(
+              placeholder: "Número de Teléfono",
+              value: "${snapshot.data.cliente['celular']}",
+              readOnly: true,
+            )),
+        Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: EditableInput(
+              placeholder: "Correo Electrónico",
+              value: snapshot.data.cliente['correo'] == null
+                  ? ""
+                  : "${snapshot.data.cliente['correo']}",
+              readOnly: true,
+            )),
+        Container(
+          width: 250,
+          child: JButton(
+            padding: EdgeInsets.all(10),
+            icon: Icons.comment,
+            fontSize: 10,
+            labelColor: AppColors.white_color,
+            label: "CONVERSAR CON CLIENTE",
+            background: AppColors.blue,
+            buttonHeight: 40.0,
+            onTab: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Chat(
+                          blocTickets: widget.blocTickets,
+                          ticket: snapshot.data,
+                          disable: true,
+                        ))),
+          ),
+        ),
+        Container(
+          width: 250,
+          child: JButton(
+            padding: EdgeInsets.all(10),
+            icon: Icons.location_on,
+            fontSize: 10,
+            labelColor: AppColors.white_color,
+            label: "VISITAR A CLIENTE",
+            background: AppColors.blue,
+            buttonHeight: 40.0,
+            onTab: () => openMapsSheet(context, snapshot.data.cliente),
+          ),
+        ),
+      ],
     );
   }
 }
