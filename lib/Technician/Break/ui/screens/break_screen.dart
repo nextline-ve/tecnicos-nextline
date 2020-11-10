@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nextline/Technician/Break/ui/widgets/form_break.dart';
-import 'package:nextline/utils/app_colors.dart';
-import 'package:nextline/utils/app_fonts.dart';
-import 'package:nextline/widgets/lateral_menu.dart';
-import 'package:nextline/widgets/navigator_bar.dart';
+import 'package:tenicos_nextline/Technician/Break/ui/widgets/form_break.dart';
+import 'package:tenicos_nextline/utils/app_colors.dart';
+import 'package:tenicos_nextline/utils/app_fonts.dart';
+import 'package:tenicos_nextline/utils/exit_app.dart';
+import 'package:tenicos_nextline/widgets/navigator_bar.dart';
 
 class BreakScreen extends StatefulWidget {
   @override
@@ -25,7 +25,7 @@ class _BreakScreen extends State<BreakScreen> {
           style: TextStyle(fontFamily: AppFonts.input, fontSize: 16),
         ),
         automaticallyImplyLeading: false,
-        actions: [LateralMenu.exitFromAppButton(context)],
+        actions: [ExitApp.exitFromAppButton(context)],
       ),
       body: Stack(children: [FormBreak()]),
       bottomNavigationBar: NavigatorBar(index: 2),

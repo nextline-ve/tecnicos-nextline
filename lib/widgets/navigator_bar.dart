@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tenicos_nextline/Profile/ui/screens/profile_screen.dart';
 import 'package:tenicos_nextline/Technician/Break/ui/screens/break_screen.dart';
-import 'package:tenicos_nextline/Technician/Profile/ui/screens/profile_screen.dart';
 import 'package:tenicos_nextline/utils/app_colors.dart';
-import 'package:tenicos_nextline/utils/app_session.dart';
 
 class NavigatorBar extends StatefulWidget {
   final int index;

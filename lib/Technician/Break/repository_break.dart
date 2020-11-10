@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:nextline/Technician/Break/model_break.dart';
-import 'package:nextline/Technician/Break/model_reason.dart';
-import 'package:nextline/utils/app_http.dart';
+import 'package:tenicos_nextline/Technician/Break/model_break.dart';
+import 'package:tenicos_nextline/Technician/Break/model_reason.dart';
+import 'package:tenicos_nextline/utils/app_http.dart';
 
 class RepositoryBreaks extends AppHttp {
   Future<Break> addBreakAPI(Break dataBreak) async {

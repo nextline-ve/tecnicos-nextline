@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
-import 'package:nextline/Technician/Break/model_break.dart';
-import 'package:nextline/Technician/Break/model_reason.dart';
-import 'package:nextline/Technician/Break/repository_break.dart';
+import 'package:tenicos_nextline/Technician/Break/model_break.dart';
+import 'package:tenicos_nextline/Technician/Break/model_reason.dart';
+import 'package:tenicos_nextline/Technician/Break/repository_break.dart';
 
 class BlocBreaks implements Bloc {
   final RepositoryBreaks reposity = RepositoryBreaks();

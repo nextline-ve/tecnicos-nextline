@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:nextline/Auth/ui/widgets/white_logo.dart';
-import 'package:nextline/Profile/bloc_profile.dart';
-import 'package:nextline/Technician/Profile/model_profile.dart';
-import 'package:nextline/Tickets/ui/widgets/background_tickets.dart';
-import 'package:nextline/utils/app_colors.dart';
-import 'package:nextline/utils/app_fonts.dart';
-import 'package:nextline/widgets/editable_input.dart';
-import 'package:nextline/widgets/jloading_screen.dart';
-import 'package:nextline/widgets/lateral_menu.dart';
-import 'package:nextline/widgets/navigator_bar.dart';
+import 'package:tenicos_nextline/Auth/ui/widgets/white_logo.dart';
+import 'package:tenicos_nextline/Profile/bloc_profile.dart';
+import 'package:tenicos_nextline/Profile/model/model_profile.dart';
+import 'package:tenicos_nextline/utils/app_colors.dart';
+import 'package:tenicos_nextline/utils/app_fonts.dart';
+import 'package:tenicos_nextline/utils/exit_app.dart';
+import 'package:tenicos_nextline/widgets/editable_input.dart';
+import 'package:tenicos_nextline/widgets/jloading_screen.dart';
+import 'package:tenicos_nextline/widgets/navigator_bar.dart';
 
 class TechProfileScreen extends StatefulWidget {
   @override
@@ -29,12 +28,12 @@ class _TechProfileScreenState extends State<TechProfileScreen> {
           style: TextStyle(fontFamily: AppFonts.input),
         ),
         automaticallyImplyLeading: false,
-        actions: [LateralMenu.exitFromAppButton(context)],
+        actions: [ExitApp.exitFromAppButton(context)],
       ),
       body: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          BackgroundTickets(),
+          // BackgroundTickets(),
           Container(
             child: FutureBuilder<TechProfile>(
                 future: blocProfile.getTechProfile(),

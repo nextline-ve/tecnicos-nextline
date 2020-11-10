@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:nextline/Technician/Break/bloc_break.dart';
-import 'package:nextline/Technician/Break/model_break.dart';
-import 'package:nextline/Technician/Break/model_reason.dart';
-import 'package:nextline/Tickets/ui/widgets/dropdown.dart';
-import 'package:nextline/Tickets/ui/widgets/input_container.dart';
-import 'package:nextline/utils/app_colors.dart';
-import 'package:nextline/utils/app_fonts.dart';
-import 'package:nextline/utils/app_http.dart';
-import 'package:nextline/utils/app_session.dart';
-import 'package:nextline/widgets/confirmation_modal.dart';
-import 'package:nextline/widgets/jbutton.dart';
+import 'package:tenicos_nextline/Technician/Assignment/ui/widgets/dropdown.dart';
+import 'package:tenicos_nextline/Technician/Assignment/ui/widgets/input_container.dart';
+import 'package:tenicos_nextline/Technician/Break/bloc_break.dart';
+import 'package:tenicos_nextline/Technician/Break/model_break.dart';
+import 'package:tenicos_nextline/Technician/Break/model_reason.dart';
+import 'package:tenicos_nextline/utils/app_colors.dart';
+import 'package:tenicos_nextline/utils/app_fonts.dart';
+import 'package:tenicos_nextline/utils/app_http.dart';
+import 'package:tenicos_nextline/utils/app_session.dart';
+import 'package:tenicos_nextline/widgets/confirmation_modal.dart';
+import 'package:tenicos_nextline/widgets/jbutton.dart';
 import 'package:intl/intl.dart';
-import 'package:nextline/widgets/jloading_screen.dart';
+import 'package:tenicos_nextline/widgets/jloading_screen.dart';
 
 class FormBreak extends StatefulWidget {
   @override
