@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nextline/utils/app_colors.dart';
+import 'package:tenicos_nextline/utils/app_colors.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:tenicos_nextline/utils/app_colors.dart';
 
