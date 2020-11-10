@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:nextline/utils/app_session.dart';
+import 'package:tenicos_nextline/utils/app_session.dart';
 import 'app_colors.dart';
 import 'app_fonts.dart';
 

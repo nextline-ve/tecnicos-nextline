@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:nextline/Home/repository_home.dart';
+import 'package:tenicos_nextline/Home/repository_home.dart';
 
 import 'app_session.dart';
 
