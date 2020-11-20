@@ -20,7 +20,7 @@ class _BreakScreen extends State<BreakScreen> {
         backgroundColor: AppColors.blue_dark,
         centerTitle: true,
         title: Text(
-          'ASIGNACIONES TÉCNICAS',
+          'NOTIFICAR BREAK',
           textAlign: TextAlign.center,
           style: TextStyle(fontFamily: AppFonts.input, fontSize: 16),
         ),
