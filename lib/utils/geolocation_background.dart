@@ -27,7 +27,7 @@ class GeolocationBackground {
 
     Geolocator.getPositionStream().listen((Position position) {
       WebSocketChannel channel = IOWebSocketChannel.connect(
-          'wss://da848501289c.ngrok.io/ws/tecnico/${this.technicianId}/'
+          'wss://panel.nextline.com.ve/ws/tecnico/${this.technicianId}/'
       );
 
       String jsonString = json.encode({
