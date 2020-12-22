@@ -25,7 +25,7 @@ class GeolocationBackground {
       }
     }
 
-    Geolocator.getPositionStream(intervalDuration: Duration(seconds: 20)).listen((Position position) {
+    Geolocator.getPositionStream().listen((Position position) {
       WebSocketChannel channel = IOWebSocketChannel.connect(
           'wss://da848501289c.ngrok.io/ws/tecnico/${this.technicianId}/'
       );
