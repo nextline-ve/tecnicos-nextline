@@ -13,7 +13,6 @@ class BlocTickets implements Bloc {
   FirebaseDatabase database;
   FirebaseStorage storage;
   Map<int, ChatModel> chats;
-  StorageUploadTask _uploadTask;
 
   final StreamController<dynamic> _streamController =
       StreamController<dynamic>.broadcast();

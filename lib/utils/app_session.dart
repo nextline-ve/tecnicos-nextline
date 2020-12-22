@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:sqflite/sqflite.dart';
+import 'package:tenicos_nextline/utils/geolocation_background.dart';
 
 import 'database_helper.dart';
 
@@ -25,10 +26,12 @@ class AppSession {
     if (AppSession.data == null) {
       AppSession.isLoggedIn = false;
       return false;
-    } else {
-      AppSession.isLoggedIn = true;
-      return true;
     }
+
+    AppSession.isLoggedIn = true;
+    print("XXXXXXXXXXXXXXXXXXXXXXXXX");
+    GeolocationBackground(technicianId: data.idUsuario);
+    return true;
   }
 }
 

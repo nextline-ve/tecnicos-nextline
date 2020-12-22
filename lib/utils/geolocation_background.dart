@@ -1,48 +1,50 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 import 'package:web_socket_channel/io.dart';
-import 'package:workmanager/workmanager.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 class GeolocationBackground {
-  final Geolocator geo = Geolocator();
 
   final technicianId;
-  IOWebSocketChannel channel;
-  Future<Position> getCurrentLocation() async {
-    return await geo.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
-  }
 
 
   GeolocationBackground({this.technicianId}) {
-    channel = IOWebSocketChannel.connect(
-        'wss://nextline.jaspesoft.com/ws/tecnico/${this.technicianId}/'
-    );
-    Workmanager.initialize(
-        realTimeLocation(), // The top level function, aka callbackDispatcher
-        isInDebugMode: true // If enabled it will post a notification whenever the task is running. Handy for debugging tasks
-    );
+    this.realTimeLocation();
   }
 
-  realTimeLocation() {
-    // ignore: cancel_subscriptions
-    Geolocator()
-        .getPositionStream(
-            LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 1))
-        .listen((Position position) {
-      // AQUI VAMOS AGREGAR LA INSTANCIA DEL SOCKET CLIENTE QUE SE CONECTA CON EL ADMIN
-      // EN LA APP DE TECNICOS
+  realTimeLocation() async {
+    LocationPermission permission = await Geolocator.requestPermission();
 
-      this.channel.sink.add({
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission != LocationPermission.whileInUse &&
+          permission != LocationPermission.always) {
+        return Future.error(
+            'Location permissions are denied (actual value: $permission).');
+      }
+    }
+
+    Geolocator.getPositionStream(intervalDuration: Duration(seconds: 20)).listen((Position position) {
+      WebSocketChannel channel = IOWebSocketChannel.connect(
+          'wss://da848501289c.ngrok.io/ws/tecnico/${this.technicianId}/'
+      );
+
+      String jsonString = json.encode({
         "tecnicoId": this.technicianId,
         "latitud": position.latitude,
-        "logitud": position.longitude
+        "longitud": position.longitude
       });
+
+      channel.sink.add(jsonString);
+      channel.sink.close();
 
       print(position == null
           ? 'Unknown'
           : position.latitude.toString() +
-              ', ' +
-              position.longitude.toString());
+          ', ' +
+          position.longitude.toString());
     });
+
   }
 }
