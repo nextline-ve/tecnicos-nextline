@@ -39,11 +39,11 @@ class GeolocationBackground {
       channel.sink.add(jsonString);
       channel.sink.close();
 
-      print(position == null
+      /*print(position == null
           ? 'Unknown'
           : position.latitude.toString() +
           ', ' +
-          position.longitude.toString());
+          position.longitude.toString());*/
     });
 
   }

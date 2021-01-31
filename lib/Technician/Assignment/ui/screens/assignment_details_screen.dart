@@ -161,26 +161,7 @@ class _AssignmentDetailsScreen extends State<AssignmentDetailsScreen> {
                   : "${snapshot.data.cliente['correo']}",
               readOnly: true,
             )),
-        Container(
-          width: 250,
-          child: JButton(
-            padding: EdgeInsets.all(10),
-            icon: Icons.comment,
-            fontSize: 10,
-            labelColor: AppColors.white_color,
-            label: "CONVERSAR CON CLIENTE",
-            background: AppColors.blue,
-            buttonHeight: 40.0,
-            onTab: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Chat(
-                          blocTickets: widget.blocTickets,
-                          ticket: snapshot.data,
-                          disable: true,
-                        ))),
-          ),
-        ),
+        (snapshot.data.tipo != TicketType.I) ? _getOpcionVerConversacion(snapshot) : Text(''),
         Container(
           width: 250,
           child: JButton(
@@ -195,6 +176,29 @@ class _AssignmentDetailsScreen extends State<AssignmentDetailsScreen> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _getOpcionVerConversacion(snapshot) {
+    return Container(
+      width: 250,
+      child: JButton(
+        padding: EdgeInsets.all(10),
+        icon: Icons.comment,
+        fontSize: 10,
+        labelColor: AppColors.white_color,
+        label: "VISUALIZAR CONVERSACIÓN",
+        background: AppColors.blue,
+        buttonHeight: 40.0,
+        onTab: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Chat(
+                  blocTickets: widget.blocTickets,
+                  ticket: snapshot.data,
+                  disable: true,
+                ))),
+      ),
     );
   }
 }
