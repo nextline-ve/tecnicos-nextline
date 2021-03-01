@@ -31,7 +31,7 @@ class Break {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['hora'] = this.minutos;
+    data['hora'] = this.hora;
     data['minutos'] = this.minutos;
     data['fecha'] = this.fecha;
     data['motivo'] = this.motivo;
@@ -41,7 +41,7 @@ class Break {
 
   Map<String, dynamic> partialtoJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['hora'] = this.minutos;
+    data['hora'] = this.hora;
     data['minutos'] = this.minutos;
     data['fecha'] = this.fecha;
     data['motivo'] = this.motivo;

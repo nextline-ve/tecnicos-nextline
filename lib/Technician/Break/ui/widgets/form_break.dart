@@ -71,7 +71,7 @@ class _FormBreak extends State<FormBreak> {
                               padding: EdgeInsets.symmetric(vertical: 10),
                               label: "Motivo del Break",
                               input: DropdownWidget(
-                                hintText: "Seleccione una avería",
+                                hintText: "Seleccione un motivo",
                                 options:
                                     DropdownItemType.generateList(this.reasons),
                                 value: selectedReason != null
