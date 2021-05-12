@@ -7,7 +7,7 @@ class RepositoryTickets extends AppHttp {
   Future<List<Ticket>> getDataTicketsAPI() async {
     Response response;
     try {
-      response = await http.get('${api}support/tickets/',
+      response = await http.get('${await this.getUrlAapi()}support/tickets/',
           options: Options(headers: header));
     } on DioError catch (e) {
       Map error = e.response.data;
@@ -20,7 +20,7 @@ class RepositoryTickets extends AppHttp {
   Future<List<Ticket>> getAssignedTicketsAPI() async {
     Response response;
     try {
-      response = await http.get('${api}support/tickets-asignados/',
+      response = await http.get('${await this.getUrlAapi()}support/tickets-asignados/',
           options: Options(headers: header));
     } on DioError catch (e) {
       Map error = e.response.data;
@@ -33,7 +33,7 @@ class RepositoryTickets extends AppHttp {
   Future<Ticket> getDetailsAssignedTicketsAPI(id) async {
     Response response;
     try {
-      response = await http.get('${api}support/tickets-asignados/$id',
+      response = await http.get('${await this.getUrlAapi()}support/tickets-asignados/$id',
           options: Options(headers: header));
     } on DioError catch (e) {
       Map error = e.response.data;
@@ -46,7 +46,7 @@ class RepositoryTickets extends AppHttp {
     Response response;
     try {
       FormData formData = assignment.toFormData();
-      response = await http.post('${api}support/ejecutar-ticket/',
+      response = await http.post('${await this.getUrlAapi()}support/ejecutar-ticket/',
           data: formData, options: Options(headers: header));
     } on DioError catch (e) {
       Map error = e.response.data;

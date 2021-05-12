@@ -9,7 +9,7 @@ class RepositoryProfile extends AppHttp {
       String oldPassword, String newPassword) async {
     Response response;
     try {
-      response = await http.post(api + 'admon/cambiar-clave/',
+      response = await http.post(await this.getUrlAapi() + 'admon/cambiar-clave/',
           data: {"old_clave": oldPassword, "clave": newPassword},
           options: Options(headers: header));
     } on DioError catch (e) {
@@ -22,7 +22,7 @@ class RepositoryProfile extends AppHttp {
   Future<TechProfile> getTechProfileAPI() async {
     Response response;
     try {
-      response = await http.get(api + 'support/perfil/',
+      response = await http.get(await this.getUrlAapi() + 'support/perfil/',
           options: Options(headers: header));
     } on DioError catch (e) {
       Map error = e.response.data;

@@ -8,7 +8,7 @@ class RepositoryBreaks extends AppHttp {
     Response response;
     FormData formData = dataBreak.toFormData();
     try {
-      response = await http.post("${api}support/break/informar/",
+      response = await http.post("${await this.getUrlAapi()}support/break/informar/",
           data: formData, options: Options(headers: header));
     } on DioError catch (e) {
       print(e.response);
@@ -19,7 +19,7 @@ class RepositoryBreaks extends AppHttp {
   Future<List<Reason>> getReasonsAPI() async {
     Response response;
     try {
-      response = await http.get("${api}support/break/motivos/",
+      response = await http.get("${await this.getUrlAapi()}support/break/motivos/",
           options: Options(headers: header));
     } on DioError catch (e) {
       Map error = e.response.data;

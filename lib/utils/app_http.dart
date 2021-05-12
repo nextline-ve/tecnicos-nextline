@@ -4,14 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:tenicos_nextline/utils/app_session.dart';
 import 'app_colors.dart';
 import 'app_fonts.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
 abstract class AppHttp {
   Dio http = Dio();
-  String api = 'https://panel.nextline.com.ve/api/v1/';
   Map<String, dynamic> header = {
     HttpHeaders.authorizationHeader:
         "Token ${(AppSession.data != null) ? AppSession.data.token : ''}"
   };
+
+  Future<String> getUrlAapi() async {
+    await DotEnv.load();
+    return DotEnv.env['API_SERVER'];
+  }
 
   static requestIndicator(context) {
     Scaffold.of(context).showSnackBar(SnackBar(
