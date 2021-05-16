@@ -16,6 +16,7 @@ import 'package:tenicos_nextline/widgets/upload_image_modal.dart';
 class SuccessRepairScreen extends StatefulWidget {
   final Assignment assignment;
   final BlocTickets blocTickets;
+
   SuccessRepairScreen(
       {Key key, @required this.assignment, @required this.blocTickets})
       : super(key: key);
@@ -34,7 +35,6 @@ class _SuccessRepairScreen extends State<SuccessRepairScreen> {
 
   void getImage(ImageSource source) {
     picker.getImage(source: source).then((PickedFile pickedFile) async {
-      print(pickedFile);
       setState(() {
         pickedFile.readAsBytes().then((value) => _uploadedFiles.add(value));
       });
@@ -103,19 +103,32 @@ class _SuccessRepairScreen extends State<SuccessRepairScreen> {
                                 background: AppColors.blue,
                                 buttonHeight: 40.0,
                                 onTab: () => {
-                                  showMyDialog(
-                                      context, "Seleccionar una foto", getImage)
+                                  if (_uploadedFiles.length < 4) {
+                                    showMyDialog(
+                                        context, "Seleccionar una foto", getImage)
+                                  } else {
+                                    ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              content:
+                                                  Text('Ya fueron seleccionadas el máximo de fotos permitidas.')))
+                                    }
+
                                 },
                               ),
                             ),
                             if (_uploadedFiles.length > 0)
                               Container(
-                                height: 150,
+                                height: 140,
                                 child: ListView(
                                   shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
                                   children: _uploadedFiles
-                                      .map((file) => Image.memory(file))
+                                      .map((file) => Container(
+                                            height: 140,
+                                            margin: const EdgeInsets.only(
+                                                left: 10.0, right: 10.0),
+                                            child: Image.memory(file),
+                                          ))
                                       .toList(),
                                 ),
                               ),
@@ -204,6 +217,9 @@ class _SuccessRepairScreen extends State<SuccessRepairScreen> {
                       background: AppColors.green_color,
                       onTab: () {
                         if (_uploadedFiles.length != 4) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Debe cargar 4 fotos.')));
+
                           return;
                         }
                         widget.assignment.observacion = this._observacion;
