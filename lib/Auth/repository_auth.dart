@@ -11,6 +11,7 @@ class RepositoryAuth extends AppHttp {
       FormData formData = new FormData.fromMap(dataLogin);
       resp = await http.post(await this.getUrlAapi() + 'config/auth/', data: formData);
     } on DioError catch (e) {
+      print(e.response.data);
       Map error = jsonDecode(jsonEncode(e.response.data));
       error.forEach((key, value) {
         throw (value);
