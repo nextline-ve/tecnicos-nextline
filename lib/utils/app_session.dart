@@ -29,7 +29,6 @@ class AppSession {
     }
 
     AppSession.isLoggedIn = true;
-    print("XXXXXXXXXXXXXXXXXXXXXXXXX");
     GeolocationBackground(technicianId: data.idUsuario);
     return true;
   }

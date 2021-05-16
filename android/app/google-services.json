@@ -49,6 +49,42 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924710173144:android:7940daefc28c5088531aad",
+        "android_client_info": {
+          "package_name": "tecnico_nextline.jaspesoft.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924710173144-ejauv80trfuuarcuaoruplfondsph75l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVIGfO4xbsdMq0MKRG4pIojYLZjx-ZhIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "924710173144-ejauv80trfuuarcuaoruplfondsph75l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "924710173144-r7pcau548og39ht3q6bnsevp6ejrq3pe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "nextline.jaspesoft.com"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

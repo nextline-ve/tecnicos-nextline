@@ -12,8 +12,6 @@ import 'package:tenicos_nextline/utils/app_fonts.dart';
 import 'package:tenicos_nextline/utils/app_utils.dart';
 import 'package:tenicos_nextline/widgets/image_viewer.dart';
 import 'package:tenicos_nextline/widgets/jloading_screen.dart';
-import 'package:tenicos_nextline/widgets/jtext_field.dart';
-import 'package:tenicos_nextline/widgets/line.dart';
 
 class Chat extends StatefulWidget {
   final picker = ImagePicker();
@@ -39,13 +37,11 @@ class _Chat extends State<Chat> {
   final List<ModelMessage> messages = new List<ModelMessage>();
   final _messageForm = GlobalKey<FormState>();
   ScrollController _scrollController = new ScrollController();
-  String _messageInput;
   String imageUrl = "";
   String imageUrlToSend = "";
   bool loadingImage = false;
   String leftName = "Asistencia técnica";
   String rightName = "Cliente";
-
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +165,6 @@ class _Chat extends State<Chat> {
           ],
         ));
   }
-
 
   Widget _nameLabel(String text) {
     return Text(

@@ -6,6 +6,7 @@ import 'package:tenicos_nextline/Technician/Assignment/model_assignment.dart';
 import 'package:tenicos_nextline/Tickets/model/modal_message.dart';
 import 'package:tenicos_nextline/Tickets/model/model_ticket.dart';
 import '../repository_tickets.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
 class BlocTickets implements Bloc {
   final RepositoryTickets repository = RepositoryTickets();
@@ -24,7 +25,8 @@ class BlocTickets implements Bloc {
   }
 
   Future<ChatModel> getChat(int ticketId) async {
-    DatabaseReference chatRef = _chatsRef.child(ticketId.toString());
+    await DotEnv.load();
+    DatabaseReference chatRef = _chatsRef.child(ticketId.toString() + ' - ' + DotEnv.env['ENV']);
     DataSnapshot chatData = await chatRef.orderByChild('order').once();
 
     chats[ticketId] = ChatModel(chatRef, chatData);
